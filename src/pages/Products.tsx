@@ -1,70 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import monstera from "@/assets/monstera.jpg";
-import snakePlant from "@/assets/snake-plant.jpg";
-import fiddleLeaf from "@/assets/fiddle-leaf.jpg";
-import pothos from "@/assets/pothos.jpg";
+import { products } from "@/data/products";
 
 const Products = () => {
-  const products = [
-    {
-      id: "monstera",
-      name: "Monstera Deliciosa",
-      price: "49.95",
-      image: monstera,
-      description: "Popular tropical plant with iconic split leaves",
-    },
-    {
-      id: "snake-plant",
-      name: "Snake Plant",
-      price: "34.95",
-      image: snakePlant,
-      description: "Low-maintenance air purifying plant",
-    },
-    {
-      id: "fiddle-leaf",
-      name: "Fiddle Leaf Fig",
-      price: "79.95",
-      image: fiddleLeaf,
-      description: "Statement plant with large violin-shaped leaves",
-    },
-    {
-      id: "pothos",
-      name: "Golden Pothos",
-      price: "24.95",
-      image: pothos,
-      description: "Easy-care trailing vine perfect for beginners",
-    },
-    {
-      id: "monstera-2",
-      name: "Variegated Monstera",
-      price: "129.95",
-      image: monstera,
-      description: "Rare collector's edition with stunning variegation",
-    },
-    {
-      id: "snake-plant-2",
-      name: "Snake Plant Black Gold",
-      price: "39.95",
-      image: snakePlant,
-      description: "Elegant variety with dark green and gold edges",
-    },
-    {
-      id: "fiddle-leaf-2",
-      name: "Fiddle Leaf Fig Bambino",
-      price: "59.95",
-      image: fiddleLeaf,
-      description: "Compact version perfect for smaller spaces",
-    },
-    {
-      id: "pothos-2",
-      name: "Marble Queen Pothos",
-      price: "29.95",
-      image: pothos,
-      description: "Beautiful white and green variegated trailing plant",
-    },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">

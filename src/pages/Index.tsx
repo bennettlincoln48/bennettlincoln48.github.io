@@ -4,45 +4,13 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Truck, Leaf, ShieldCheck } from "lucide-react";
+import { getFeaturedProducts } from "@/data/products";
 import heroImage from "@/assets/hero-plants.jpg";
 import indoorPlants from "@/assets/indoor-plants.jpg";
 import outdoorPlants from "@/assets/outdoor-plants.jpg";
-import monstera from "@/assets/monstera.jpg";
-import snakePlant from "@/assets/snake-plant.jpg";
-import fiddleLeaf from "@/assets/fiddle-leaf.jpg";
-import pothos from "@/assets/pothos.jpg";
 
 const Index = () => {
-  const featuredProducts = [
-    {
-      id: "monstera",
-      name: "Monstera Deliciosa",
-      price: "49.95",
-      image: monstera,
-      description: "Popular tropical plant with iconic split leaves",
-    },
-    {
-      id: "snake-plant",
-      name: "Snake Plant",
-      price: "34.95",
-      image: snakePlant,
-      description: "Low-maintenance air purifying plant",
-    },
-    {
-      id: "fiddle-leaf",
-      name: "Fiddle Leaf Fig",
-      price: "79.95",
-      image: fiddleLeaf,
-      description: "Statement plant with large violin-shaped leaves",
-    },
-    {
-      id: "pothos",
-      name: "Golden Pothos",
-      price: "24.95",
-      image: pothos,
-      description: "Easy-care trailing vine perfect for beginners",
-    },
-  ];
+  const featuredProducts = getFeaturedProducts();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -66,7 +34,7 @@ const Index = () => {
             <p className="text-xl md:text-2xl mb-8 opacity-95">
               Discover over 1,000+ premium plants with expert care support
             </p>
-            <Link to="/products">
+            <Link to="/products" data-testid="link-hero-shop-now">
               <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6">
                 Shop Now
               </Button>
@@ -116,7 +84,7 @@ const Index = () => {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Link to="/products">
+              <Link to="/products" data-testid="link-view-all-products">
                 <Button size="lg" variant="outline">
                   View All Products
                 </Button>
@@ -133,7 +101,7 @@ const Index = () => {
               <p className="text-muted-foreground text-lg">Find the perfect plants for your space</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Link to="/collections" className="group relative h-80 rounded-xl overflow-hidden">
+              <Link to="/collections" className="group relative h-80 rounded-xl overflow-hidden" data-testid="link-collection-indoor">
                 <img
                   src={indoorPlants}
                   alt="Indoor Plants"
@@ -146,7 +114,7 @@ const Index = () => {
                   </div>
                 </div>
               </Link>
-              <Link to="/collections" className="group relative h-80 rounded-xl overflow-hidden">
+              <Link to="/collections" className="group relative h-80 rounded-xl overflow-hidden" data-testid="link-collection-outdoor">
                 <img
                   src={outdoorPlants}
                   alt="Outdoor Plants"

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useCart, Product } from "@/contexts/CartContext";
 
 interface ProductCardProps {
   id: string;
@@ -8,12 +9,42 @@ interface ProductCardProps {
   price: string;
   image: string;
   description?: string;
+  detailedDescription?: string;
+  rating?: number;
+  reviews?: number;
+  careLevel?: string;
+  size?: string;
+  light?: string;
+  water?: string;
 }
 
-const ProductCard = ({ id, name, price, image, description }: ProductCardProps) => {
+const ProductCard = (props: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const { id, name, price, image, description } = props;
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const product: Product = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      image: props.image,
+      description: props.description || "",
+      detailedDescription: props.detailedDescription,
+      rating: props.rating,
+      reviews: props.reviews,
+      careLevel: props.careLevel,
+      size: props.size,
+      light: props.light,
+      water: props.water,
+    };
+    addToCart(product);
+  };
+
   return (
     <Card className="group overflow-hidden border-border hover:shadow-[var(--card-hover-shadow)] transition-all duration-300">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${id}`} data-testid={`link-product-${id}`}>
         <div className="aspect-square overflow-hidden bg-muted">
           <img
             src={image}
@@ -23,7 +54,7 @@ const ProductCard = ({ id, name, price, image, description }: ProductCardProps) 
         </div>
       </Link>
       <div className="p-4">
-        <Link to={`/product/${id}`}>
+        <Link to={`/product/${id}`} data-testid={`link-product-title-${id}`}>
           <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
             {name}
           </h3>
@@ -33,7 +64,12 @@ const ProductCard = ({ id, name, price, image, description }: ProductCardProps) 
         )}
         <div className="flex items-center justify-between">
           <span className="text-xl font-bold text-primary">${price}</span>
-          <Button size="sm" className="bg-accent hover:bg-accent/90">
+          <Button 
+            size="sm" 
+            className="bg-accent hover:bg-accent/90"
+            onClick={handleAddToCart}
+            data-testid={`button-add-cart-${id}`}
+          >
             Add to Cart
           </Button>
         </div>
